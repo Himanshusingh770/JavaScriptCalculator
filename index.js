@@ -89,7 +89,7 @@ function performCalculation() {
             return;
         }
 
-        let tokens = tokenize(getCurrentDisplay);
+        let tokens = generateTokens(getCurrentDisplay);
         tokens = handlePrecedence(tokens, ['*', '%', '/']);
         let result = handlePrecedence(tokens, ['+', '-'])[0];
 
@@ -125,7 +125,7 @@ function handleCalculationError() {
     document.getElementById('display').value = 'NaN';
 }
 
-function tokenize(input) {
+function generateTokens(input) {
     let tokens = [];
     let currentNumber = '';
     let previousChar = null;
